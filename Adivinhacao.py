@@ -7,15 +7,16 @@ def jogar():
     print("Bem vindo ao jogo de adivinhação!")
     print("*********************************")
 
-    # É preciso importar a biblioteca random e chama-la novamente no comando
-    numero_secreto = round(random.randrange(1,101))#cria um numero aleatoriamente e o round apenas arredonda
+    #Criamos um numero aleatoriamente de 1 a 100 e com o round apenas arredondando
+    numero_secreto = round(random.randrange(1,101))
 
     total_de_tentativas = 0
     pontos = 1000
 
     print("(1) Fácil (2) Médio (3) Difícil")
-    nivel = int(input("Defina o nível: "))#no input a variavel é sempre str e as vezes é necessario transfomrar em int
+    nivel = int(input("Defina o nível: "))
 
+    #Para ser escolhido o nivel de dificuldade do jogo
     if (nivel == 1):
         total_de_tentativas = 20
     elif (nivel == 2):
@@ -23,6 +24,7 @@ def jogar():
     else:
         total_de_tentativas = 5
 
+    #realizando o jogo  com base na dificuldade escolhida
     for rodada in range(1, total_de_tentativas + 1):
 
         print("\nTentativa {} de {}".format(rodada, total_de_tentativas))
@@ -38,10 +40,11 @@ def jogar():
         maior   = chute >  numero_secreto
         menor   = chute <  numero_secreto
 
+        #realizando as comparações de caso o chute seja maior, menor ou caso tenha acertado
         if(acertou):
             print("\nParabens! Você acertou e fez {} pontos!".format(pontos))
             print("Fim de jogo!")
-            break#termina abruptamente o ciclo do for ou while
+            break
         else:
             if(menor):
                 print("Seu chute foi menor que o numero secreto!")
@@ -51,11 +54,12 @@ def jogar():
                 print("\nO número secreto era {} Você fez {}".format(numero_secreto, pontos))
                 print("Fim de jogo!")
 
-            pontos_perdidos = abs(numero_secreto - chute) #abs() dá o valor absoluto
-
-            pontos_perdidos = abs(numero_secreto - chute) #abs() dá o valor absoluto  v
+            #Realizando o calculo para a pontuação final
+            pontos_perdidos = abs(numero_secreto - chute)
+            pontos_perdidos = abs(numero_secreto - chute)
             pontos = pontos - pontos_perdidos
         rodada = rodada + 1
 
-if (__name__ == "__main__"): #para poder-se chamar a função pelo prompto ou ide
+#Para ser possível chamar a função pelo prompto ou o IDE
+if (__name__ == "__main__"):
     jogar()
